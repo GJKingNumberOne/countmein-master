@@ -30,8 +30,8 @@ class TabBarViewController: UITabBarController {
         addOneChildVC(childVC: minevc, title: "我的", imageName: "", selectedImageName: "")
         
         
-//        let items = [activiteVC, findVC, minevc]
-//        self.viewControllers = items
+        let items = [activiteVC, findVC, minevc]
+        self.viewControllers = items
         self.selectedIndex = 1
         
     }
