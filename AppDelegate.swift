@@ -20,11 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = TabBarViewController()
         
-        
+        configureAppearance()
         
         return true
     }
 
+    func configureAppearance() {
+//        let navBar = UINavigationBar.appearance()
+//        navBar.setBackgroundImage(UIImage.imageWithColor(UIColor(red: 0.0891675, green: 0.420653, blue: 0.833865, alpha: 1)), forBarMetrics: .Default)
+//        navBar.backgroundColor = UIColor.blueColor()
+//        navBar.shadowImage = UIImage()
+//        navBar.tintColor = UIColor.blackColor()
+//        navBar.barTintColor = UIColor.blackColor()
+        
+//        let navTextAttrs = [NSFontAttributeName: UIFont.systemFontOfSize(20), NSForegroundColorAttributeName: UIColor.whiteColor()]
+//        navBar.titleTextAttributes = navTextAttrs
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

@@ -14,10 +14,12 @@ class NetworkingSetViewController: BaseViewController {
     var selectedIndex = 0
     
     let titles = ["正式环境", "开发环境", "测试环境"]
+    let descs = [Domain.ProductionEnvironment.rawValue, Domain.DevelopmentEnvironment.rawValue, Domain.TestEnvironment.rawValue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        selectedIndex = NSUserDefaults.standardUserDefaults().integerForKey(kEnvironment)
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
@@ -43,7 +45,7 @@ extension NetworkingSetViewController: UITableViewDelegate,UITableViewDataSource
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: identifier)
         }
         cell?.textLabel?.text = titles[indexPath.row]
-        
+        cell?.detailTextLabel?.text = descs[indexPath.row]
         
         if indexPath.row == selectedIndex {
             cell?.accessoryType = .Checkmark
@@ -55,9 +57,25 @@ extension NetworkingSetViewController: UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let row = indexPath.row
-//        var protocolType: Protocol
-//        var domain: Domain
+        let row = indexPath.row
+        var protocolType: Protocol
+        var domain: Domain
+        
+        if row == 0 {
+            protocolType = .HTTPS
+            domain = .ProductionEnvironment
+        } else if row == 1{
+            protocolType = .HTTP
+            domain = .DevelopmentEnvironment
+        } else {
+            protocolType = .HTTP
+            domain = .TestEnvironment
+        }
+        ApiClient.sharedInstance.domain = domain
+        ApiClient.sharedInstance.protocolType = protocolType
+        selectedIndex = indexPath.row
+        tableView.reloadData()
+        
     }
     
     

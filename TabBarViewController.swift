@@ -30,12 +30,11 @@ class TabBarViewController: UITabBarController {
         addOneChildVC(childVC: minevc, title: "我的", imageName: "", selectedImageName: "")
         
         
-        let items = [activiteVC, findVC, minevc]
-        self.viewControllers = items
+//        let items = [activiteVC, findVC, minevc]
+//        self.viewControllers = items
         self.selectedIndex = 1
         
     }
-    //厉害法开始发客户反馈手机话费 
     
     func addOneChildVC(childVC childVC: UIViewController, title: String, imageName: String, selectedImageName: String) {
         childVC.title = title
@@ -43,6 +42,7 @@ class TabBarViewController: UITabBarController {
         childVC.tabBarItem.selectedImage = UIImage(named: selectedImageName)
         
         let naVC = NavigationViewController(rootViewController: childVC)
+        
         addChildViewController(naVC)
     }
 
